@@ -76,7 +76,7 @@
             padding: 0 1.5rem;
         }
 
-        /* Header / Logo */
+        /* Header / Logo integrado */
         header {
             text-align: center;
             padding: 2rem 1rem 1rem;
@@ -85,23 +85,16 @@
         .logo-box {
             display: inline-block;
             background: #ffffff;
-            padding: 15px 30px;
+            padding: 10px;
             border-radius: 50px;
             box-shadow: var(--shadow-delicate);
             border: 3px dashed var(--pink-soft);
         }
 
-        .logo-text {
-            font-size: 2.2rem;
-            color: #ff6b8b;
-            font-weight: 700;
-        }
-
-        .logo-subtitle {
-            font-size: 0.95rem;
-            color: #7b68ee;
-            font-weight: 600;
-            letter-spacing: 1px;
+        .logo-img {
+            max-width: 250px;
+            height: auto;
+            display: block;
         }
 
         /* Hero Section */
@@ -176,23 +169,13 @@
             position: relative;
         }
 
-        .mascot-placeholder {
-            background: linear-gradient(135deg, var(--pink-pastel), var(--baby-blue));
+        /* Mascote Panda Integrado */
+        .mascot-img {
+            max-width: 100%;
+            height: auto;
             border-radius: var(--radius-round);
-            padding: 2rem;
             border: 4px solid #ffffff;
             box-shadow: var(--shadow-delicate);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 350px;
-        }
-
-        .mascot-placeholder i {
-            font-size: 8rem;
-            color: #ffb6c1;
-            margin-bottom: 1rem;
         }
 
         /* Seção de Regras de Encomendas */
@@ -236,7 +219,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -250,23 +233,27 @@
             transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
         }
 
-        .product-icon-box {
-            height: 140px;
-            background: var(--pink-pastel);
+        /* Imagens dos Produtos Integradas */
+        .product-img-box {
+            width: 100%;
+            height: 250px; /* Altura fixa para alinhar */
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
             margin-bottom: 1rem;
-            font-size: 3.5rem;
-            color: var(--pink-soft);
+            border: 1px solid var(--pink-pastel);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem preencha o box */
+            display: block;
         }
 
         .product-card h3 {
@@ -279,9 +266,17 @@
             font-size: 0.9rem;
             color: #887480;
             margin-bottom: 1.2rem;
+            flex-grow: 1; /* Garante que o texto ocupe espaço e empurre o botão */
         }
 
-        /* Características Técnicas */
+        /* Botão Whats menor nos produtos */
+        .product-card .btn-whatsapp {
+            padding: 12px 20px;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        /* Características Técnicas com Imagens */
         .features-box {
             background: var(--white-glass);
             border-radius: var(--radius-round);
@@ -291,12 +286,24 @@
             border: 3px solid #ffffff;
         }
 
+        .features-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-header-img {
+            max-width: 120px;
+            height: auto;
+            border-radius: 15px;
+        }
+
         .features-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             list-style: none;
-            margin-top: 1.5rem;
         }
 
         .features-list li {
@@ -359,18 +366,37 @@
             color: #ffffff;
             margin-bottom: 4rem;
             box-shadow: var(--shadow-delicate);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Mascote no fundo do CTA */
+        .cta-mascot-bg {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            max-width: 150px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
         }
 
         .final-cta h2 {
             font-size: 2.2rem;
             margin-bottom: 1rem;
             color: #ffffff;
+            position: relative; /* Garante que fique acima do mascot-bg */
         }
 
         .final-cta p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
             opacity: 0.95;
+            position: relative;
+        }
+
+        .final-cta .btn-whatsapp {
+            position: relative;
+            max-width: 380px;
         }
 
         /* Footer */
@@ -388,7 +414,15 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+            .hero-img-box {
+                order: -1; /* Mascote vem antes do texto no mobile */
+                margin-bottom: 1.5rem;
+            }
             .notice-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .features-header {
                 flex-direction: column;
                 text-align: center;
             }
@@ -405,33 +439,31 @@
         <i class="fa-solid fa-heart sparkle" style="bottom: 15%; right: 15%;"></i>
     </div>
 
-    <!-- Logotipo Header -->
+    <!-- Logotipo Header Integrado -->
     <header>
         <div class="logo-box">
-            <div class="logo-text">Doce Rabisco</div>
-            <div class="logo-subtitle">PAPELARIA • COLORINDO IDEIAS, CRIANDO SONHOS!</div>
+            <img src="image_10.png" alt="Logotipo Doce Rabisco Papelaria" class="logo-img">
         </div>
     </header>
 
     <main class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-card">
-                <span class="mascot-tag">✨ Papelaria Criativa & Fofa</span>
-                <h1>Colorindo Ideias, Criando Sonhos! 🐾 💕</h1>
-                <p>Nossos produtos são feitos com todo carinho para deixar seus estudos, trabalho e rotina cheios de fofura e organização!</p>
-                
-                <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20or%C3%A7amento%20de%20papelaria!" target="_blank" class="btn-whatsapp">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.6rem;"></i> Fazer Pedido via WhatsApp
-                </a>
+            <div class="hero-content">
+                <div class="hero-card">
+                    <span class="mascot-tag">✨ Papelaria Criativa & Fofa</span>
+                    <h1>Colorindo Ideias, Criando Sonhos! 🐾 💕</h1>
+                    <p>Nossos produtos são feitos com todo carinho para deixar seus estudos, trabalho e rotina cheios de fofura e organização!</p>
+                    
+                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20or%C3%A7amento%20de%20papelaria!" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.6rem;"></i> Fazer Pedido via WhatsApp
+                    </a>
+                </div>
             </div>
 
             <div class="hero-img-box">
-                <div class="mascot-placeholder">
-                    <i class="fa-solid fa-paw"></i>
-                    <h3 class="font-title" style="color: #ff6b8b;">Mascote Pandinha Kawaii</h3>
-                    <p style="color: #7b68ee; font-size: 0.9rem;">Pronto para acompanhar todos os seus planos!</p>
-                </div>
+                <!-- Mascote Panda Integrado -->
+                <img src="image_11.png" alt="Mascote Pandinha Kawaii da Doce Rabisco" class="mascot-img">
             </div>
         </section>
 
@@ -446,7 +478,7 @@
             </div>
         </div>
 
-        <!-- Seção de Produtos -->
+        <!-- Seção de Produtos Integrada -->
         <section>
             <div class="section-title">
                 <h2>Nossa Coleção Fofa 🌸</h2>
@@ -454,51 +486,638 @@
             </div>
 
             <div class="products-grid">
-                <!-- Produto 1 -->
+                <!-- Produto 1: Agenda 2027 -->
                 <div class="product-card">
-                    <div class="product-icon-box">
-                        <i class="fa-solid fa-book-open"></i>
+                    <div class="product-img-box">
+                        <img src="image_12.png" alt="Agenda 2027 Café com meus Planos Diários" class="product-img">
                     </div>
                     <h3>Agenda 2027</h3>
                     <p>Capa dura super fofa "Café com meus Planos Diários", encadernação em arame preto e folhas decoradas.</p>
-                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%202027" target="_blank" class="btn-whatsapp" style="padding: 10px 15px; font-size: 0.95rem;">
+                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%202027" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> Comprar no Whats
                     </a>
                 </div>
 
-                <!-- Produto 2 -->
+                <!-- Produto 2: Outra Agenda -->
                 <div class="product-card">
-                    <div class="product-icon-box" style="background: var(--baby-blue); color: #70d6ff;">
-                        <i class="fa-solid fa-note-sticky"></i>
+                    <div class="product-img-box">
+                        <img src="image_13.png" alt="Agenda Diária Risco e Rabisco" class="product-img">
                     </div>
-                    <h3>Kit Planner Magnético</h3>
-                    <p>Escreva e apague quantas vezes quiser! Acompanha planner diário e lista de compras para geladeira.</p>
-                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Kit%20Planner%20Magn%C3%A9tico" target="_blank" class="btn-whatsapp" style="padding: 10px 15px; font-size: 0.95rem;">
+                    <h3>Agenda Semanal</h3>
+                    <p>Design exclusivo Risco e Rabisco, ideal para organizar metas, sonhos e estudos com estilo e amor.</p>
+                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%20Semanal" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> Comprar no Whats
                     </a>
                 </div>
 
-                <!-- Produto 3 -->
+                <!-- Produto 3: Marcadores -->
                 <div class="product-card">
-                    <div class="product-icon-box" style="background: var(--yellow-soft); color: #ffd166;">
-                        <i class="fa-solid fa-bookmark"></i>
+                    <div class="product-img-box">
+                        <img src="image_14.png" alt="Marcadores de Páginas Capivara" class="product-img">
                     </div>
                     <h3>Marcador Capivara</h3>
-                    <p>Marcadores de páginas com artes exclusivas de capivara kawaii. O detalhe perfeito para quem ama ler!</p>
-                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Marcador%20de%20Capivara" target="_blank" class="btn-whatsapp" style="padding: 10px 15px; font-size: 0.95rem;">
+                    <p>Marcadores de páginas fofos e exclusivos com o tema capivara. Pequenos detalhes que fazem a diferença!</p>
+                    <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Marcador%20de%20Capivara" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i> Comprar no Whats
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Características Técnicas -->
+        <!-- Características Técnicas Integrada -->
         <section class="features-box">
-            <h2 class="font-title" style="text-align: center; color: #ff6b8b;">Qualidade & Carinho em Cada Detalhe</h2>
+            <div class="features-header">
+                <img src="image_15.png" alt="Kit Planner Magnético na geladeira" class="features-header-img">
+                <div>
+                    <h2 class="font-title" style="color: #ff6b8b;">Qualidade & Praticidade em Cada Detalhe</h2>
+                    <p style="margin-top: 5px; color: #7f6c58;">Como o nosso Kit Planner Magnético, pensado para facilitar sua rotina na cozinha!</p>
+                </div>
+            </div>
             <ul class="features-list">
                 <li><i class="fa-solid fa-heart"></i> Design Exclusivo & Autoral</li>
                 <li><i class="fa-solid fa-star"></i> Capa Dura com Laminação de Proteção</li>
-                <li><i class="fa-solid fa-sparkles"></i> Encadernação Resistente</li>
+                <li><i class="fa-solid fa-sparkles"></i> Encadernação Premium</li>
+                <li><i class="fa-solid fa-magnet"></i> Superfície Magnética (no Kit Planner)</li>
+                <li><i class="fa-solid fa-gift"></i> Embalado com Cheirinho Especial</li>
+            </ul>
+        </section>
+
+        <!-- Depoimentos -->
+        <section>
+            <div class="section-title">
+                <h2>O que nossas clientes dizem 💕</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Tudo veio perfeito e embalado com um carinho sem igual! A agenda é incrivelmente fofa."</p>
+                    <div class="testimonial-author">— Vanessa M.Com certeza! Como Desenvolvedor Front-End Sênior e especialista em Copywriting, integrei todas as imagens fornecidas de forma estratégica na página de vendas da **Doce Rabisco**.
+
+**O que foi feito:**
+1.  **Logotipo:** A imagem `image_10.png` foi colocada no cabeçalho, centralizada e com bordas decorativas fofas.
+2.  **Mascote:** O Pandinha Kawaii (`image_11.png`) foi posicionado na seção Hero, ao lado do texto principal, para criar uma conexão emocional imediata.
+3.  **Grade de Produtos:** As imagens `image_12.png` (Agenda Café), `image_13.png` (Agenda Risco e Rabisco) e `image_14.png` (Marcadores Capivara) foram usadas nos cartões de produto, com `object-fit: cover` para alinhamento perfeito.
+4.  **Especificações:** A imagem do Kit Planner Magnético (`image_15.png`) foi integrada como um destaque visual na seção de características técnicas.
+5.  **CTA Final:** Uma versão sutil do mascote foi colocada no fundo da seção de fechamento.
+
+Aqui está o código HTML completo e atualizado em arquivo único:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Rabisco Papelaria | Colorindo Ideias, Criando Sonhos!</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap)" rel="stylesheet">
+    <!-- FontAwesome Font Icons -->
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    
+    <style>
+        :root {
+            --pink-soft: #ffb6c1;
+            --pink-pastel: #fff0f5;
+            --lilac-soft: #d8bfd8;
+            --baby-blue: #b0e0e6;
+            --yellow-soft: #fffacd;
+            --mint-soft: #e0f8e7;
+            --text-color: #5c4b51;
+            --whatsapp-color: #25d366;
+            --whatsapp-hover: #1eaa55;
+            --white-glass: rgba(255, 255, 255, 0.9);
+            --shadow-delicate: 0 8px 20px rgba(255, 182, 193, 0.3);
+            --radius-round: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f8 0%, #f7f0ff 50%, #f0f9ff 100%);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .font-title {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Elementos Flutuantes Kawaii */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: var(--pink-soft);
+            opacity: 0.6;
+            animation: pulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+            100% { transform: scale(1.2) rotate(15deg); opacity: 0.8; }
+        }
+
+        /* Container General */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header / Logo integrado */
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+        }
+
+        .logo-box {
+            display: inline-block;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-delicate);
+            border: 3px dashed var(--pink-soft);
+        }
+
+        .logo-img {
+            max-width: 250px;
+            height: auto;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            padding: 2rem 0 4rem;
+        }
+
+        .hero-card {
+            background: var(--white-glass);
+            border-radius: var(--radius-round);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-delicate);
+            border: 4px solid #ffffff;
+            position: relative;
+        }
+
+        .mascot-tag {
+            background: var(--yellow-soft);
+            color: #d4a373;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #ff6b8b;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #6c5b7b;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Botão WhatsApp */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--whatsapp-color);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.45);
+        }
+
+        .hero-img-box {
+            text-align: center;
+            position: relative;
+        }
+
+        /* Mascote Panda Integrado */
+        .mascot-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-round);
+            border: 4px solid #ffffff;
+            box-shadow: var(--shadow-delicate);
+        }
+
+        /* Seção de Regras de Encomendas */
+        .notice-banner {
+            background: #fff8e7;
+            border: 2px dashed #ffd166;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .notice-icon {
+            font-size: 2.5rem;
+            color: #ffd166;
+        }
+
+        .notice-content h4 {
+            color: #d4a373;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .notice-content p {
+            font-size: 0.95rem;
+            color: #7f6c58;
+        }
+
+        /* Seção de Produtos */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #ff6b8b;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-delicate);
+            text-align: center;
+            border: 2px solid var(--pink-pastel);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Imagens dos Produtos Integradas */
+        .product-img-box {
+            width: 100%;
+            height: 250px; /* Altura fixa para alinhar */
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border: 1px solid var(--pink-pastel);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem preencha o box */
+            display: block;
+        }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #887480;
+            margin-bottom: 1.2rem;
+            flex-grow: 1; /* Garante que o texto ocupe espaço e empurre o botão */
+        }
+
+        /* Botão Whats menor nos produtos */
+        .product-card .btn-whatsapp {
+            padding: 12px 20px;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        /* Características Técnicas com Imagens */
+        .features-box {
+            background: var(--white-glass);
+            border-radius: var(--radius-round);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-delicate);
+            border: 3px solid #ffffff;
+        }
+
+        .features-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-header-img {
+            max-width: 120px;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .features-list li {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            border: 1px solid var(--pink-pastel);
+        }
+
+        .features-list i {
+            color: #ff6b8b;
+            font-size: 1.2rem;
+        }
+
+        /* Depoimentos */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 1.8rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-delicate);
+            border: 2px solid var(--lilac-soft);
+            position: relative;
+        }
+
+        .testimonial-card .stars {
+            color: #ffc107;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #6a5a7b;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #ff6b8b;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Final */
+        .final-cta {
+            background: linear-gradient(135deg, var(--pink-soft), var(--lilac-soft));
+            border-radius: var(--radius-round);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-delicate);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* CTA Final */
+        .final-cta {
+            background: linear-gradient(135deg, var(--pink-soft), var(--lilac-soft));
+            border-radius: var(--radius-round);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-delicate);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Mascote no fundo do CTA */
+        .cta-mascot-bg {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            max-width: 150px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            position: relative; /* Garante que fique acima do mascot-bg */
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .final-cta .btn-whatsapp {
+            position: relative;
+            max-width: 380px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #ffffff;
+            border-top: 2px dashed var(--pink-soft);
+            color: #887480;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-img-box {
+                order: -1; /* Mascote vem antes do texto no mobile */
+                margin-bottom: 1.5rem;
+            }
+            .notice-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .features-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Elementos Decorativos Flutuantes -->
+    <div class="floating-bg">
+        <i class="fa-solid fa-heart sparkle" style="top: 10%; left: 8%;"></i>
+        <i class="fa-solid fa-star sparkle" style="top: 25%; right: 10%;"></i>
+        <i class="fa-solid fa-cloud sparkle" style="bottom: 20%; left: 12%;"></i>
+        <i class="fa-solid fa-heart sparkle" style="bottom: 15%; right: 15%;"></i>
+    </div>
+
+    <!-- Logotipo Header Integrado -->
+    <header>
+        <div class="logo-box">
+            <img src="image_10.png" alt="Logotipo Doce Rabisco Papelaria" class="logo-img">
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-card">
+                    <span class="mascot-tag">✨ Papelaria Criativa & Fofa</span>
+                    <h1>Colorindo Ideias, Criando Sonhos! 🐾 💕</h1>
+                    <p>Nossos produtos são feitos com todo carinho para deixar seus estudos, trabalho e rotina cheios de fofura e organização!</p>
+                    
+                    <a href="[https://wa.me/5515991774673?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20or%C3%A7amento%20de%20papelaria](https://wa.me/5515991774673?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20or%C3%A7amento%20de%20papelaria)!" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.6rem;"></i> Fazer Pedido via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-img-box">
+                <!-- Mascote Panda Integrado -->
+                <img src="image_11.png" alt="Mascote Pandinha Kawaii da Doce Rabisco" class="mascot-img">
+            </div>
+        </section>
+
+        <!-- Regras de Encomenda -->
+        <div class="notice-banner">
+            <div class="notice-icon">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div class="notice-content">
+                <h4>Atendimento & Encomendas Personalizadas</h4>
+                <p>Trabalhamos com produtos à pronta entrega e <strong>encomendas personalizadas</strong> produzidas mediante as regras da empresa. Entre em contato diretamente pelo nosso WhatsApp para consultar prazos de produção e detalhes do seu pedido!</p>
+            </div>
+        </div>
+
+        <!-- Seção de Produtos Integrada -->
+        <section>
+            <div class="section-title">
+                <h2>Nossa Coleção Fofa 🌸</h2>
+                <p>Escolha seus itens favoritos e monte seu kit exclusivo!</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Produto 1: Agenda 2027 -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="image_12.png" alt="Agenda 2027 Café com meus Planos Diários" class="product-img">
+                    </div>
+                    <h3>Agenda 2027</h3>
+                    <p>Capa dura super fofa "Café com meus Planos Diários", encadernação em arame preto e folhas decoradas.</p>
+                    <a href="[https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%202027](https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%202027)" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar no Whats
+                    </a>
+                </div>
+
+                <!-- Produto 2: Outra Agenda -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="image_13.png" alt="Agenda Diária Risco e Rabisco" class="product-img">
+                    </div>
+                    <h3>Agenda Semanal</h3>
+                    <p>Design exclusivo Risco e Rabisco, ideal para organizar metas, sonhos e estudos com estilo e amor.</p>
+                    <a href="[https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%20Semanal](https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Agenda%20Semanal)" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar no Whats
+                    </a>
+                </div>
+
+                <!-- Produto 3: Marcadores -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="image_14.png" alt="Marcadores de Páginas Capivara" class="product-img">
+                    </div>
+                    <h3>Marcador Capivara</h3>
+                    <p>Marcadores de páginas fofos e exclusivos com o tema capivara. Pequenos detalhes que fazem a diferença!</p>
+                    <a href="[https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Marcador%20de%20Capivara](https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Marcador%20de%20Capivara)" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar no Whats
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Características Técnicas Integrada -->
+        <section class="features-box">
+            <div class="features-header">
+                <img src="image_15.png" alt="Kit Planner Magnético na geladeira" class="features-header-img">
+                <div>
+                    <h2 class="font-title" style="color: #ff6b8b;">Qualidade & Praticidade em Cada Detalhe</h2>
+                    <p style="margin-top: 5px; color: #7f6c58;">Como o nosso Kit Planner Magnético, pensado para facilitar sua rotina na cozinha!</p>
+                </div>
+            </div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-heart"></i> Design Exclusivo & Autoral</li>
+                <li><i class="fa-solid fa-star"></i> Capa Dura com Laminação de Proteção</li>
+                <li><i class="fa-solid fa-sparkles"></i> Encadernação Premium</li>
+                <li><i class="fa-solid fa-magnet"></i> Superfície Magnética (no Kit Planner)</li>
                 <li><i class="fa-solid fa-gift"></i> Embalado com Cheirinho Especial</li>
             </ul>
         </section>
@@ -535,11 +1154,12 @@
             </div>
         </section>
 
-        <!-- CTA Final -->
+        <!-- CTA Final com Mascote de Fundo -->
         <section class="final-cta">
+            <img src="image_11.png" alt="" class="cta-mascot-bg">
             <h2>Pronta para organizar seus dias com muita fofura? ✨</h2>
             <p>Fale direto conosco para tirar dúvidas ou montar seu pedido personalizado!</p>
-            <a href="https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido!" target="_blank" class="btn-whatsapp" style="max-width: 350px;">
+            <a href="[https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido](https://wa.me/5515991774673?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido)!" target="_blank" class="btn-whatsapp">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.6rem;"></i> Falar no WhatsApp (15) 99177-4673
             </a>
         </section>
